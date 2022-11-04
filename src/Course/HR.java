@@ -1,34 +1,149 @@
 package Course;
 
+import java.util.Arrays;
 
 public class HR {
 
+    private final Employee[] employee;                                     //массив
 
-    public static void main(String[] args) {
-        Employee[] employee = new Employee[10];
-        employee[0] = new Employee("Антонов", "Игорь", "Николаевич", 1, 65000f);
-        employee[1] = new Employee("Васильев", "Дмитрий", "Олегович", 2, 70000f);
-        employee[2] = new Employee("Григорьев", "Сергей", "Геннадьевич", 1, 68000f);
-        employee[3] = new Employee("Денисова", "Лариса", "Львовна", 2, 70000f);
-        employee[4] = new Employee("Ерёмина", "Ольга", "Сергеевна", 3, 80000f);
-        employee[5] = new Employee("Иванов", "Максим", "Петрович", 3, 75000f);
-        employee[6] = new Employee("Кузнецов", "Артём", "Дмитриевич", 1, 63000f);
-        employee[7] = new Employee("Левина", "Татьяна", "Семеновна", 2, 74000f);
-        employee[8] = new Employee("Максимов", "Илья", "Михайлович", 3, 72000f);
-        employee[9] = new Employee("Петров", "Антон", "Ильич", 3, 69000f);
-        for (Employee i : employee) {
-            System.out.println(i);
+    public HR(Employee[] employee) {                               //контструктор
+        this.employee = employee;
+
+    }
+
+
+    public double sumSalaryAllEmployee() {      //сумма затрат на зарплату в месяц
+        double sumSalary = 0;
+        for (Employee employee1 : employee) {
+            if (employee1 != null) {
+                sumSalary += employee1.getSalary();
+            }
         }
-        calculateSum();
 
+        return sumSalary;
 
     }
 
-    private static void calculateSum() {
+
+    public double getMinSalary() {                                   //расчет минимальной зарплаты
+        double minSalary = 0;
+        int count = 0;
+        for (; count < employee.length; count++) {
+            if (employee[count] != null) {
+                minSalary = employee[count].getSalary();
+                break;
+            }
+        }
+        for (; count < employee.length; count++) {
+            if (employee[count] != null && employee[count].getSalary() < minSalary) {
+                minSalary = employee[count].getSalary();
+            }
+        }
+
+        return minSalary;
     }
 
 
+    public double getMaxSalary() {                            //расчет максимальной зарплаты
+        double maxSalary = 0;
+        int count = 0;
+        for (; count < employee.length; count++) {
+            if (employee[count] != null) {
+                maxSalary = employee[count].getSalary();
+            }
+            for (; count < employee.length; count++) {
+                if (employee[count] != null && employee[count].getSalary() > maxSalary) {
+                    maxSalary = employee[count].getSalary();
+                }
+            }
+
+        }
+        return maxSalary;
+
+    }
+
+    public double averageSalary() {                        //расчет Средней зарплаты
+        double averageSalary = 0;
+        double sumSalary = 0;
+        double countId = 0;
+        for (Employee employee1 : employee) {
+            if (employee1 != null) {
+                sumSalary += employee1.getSalary();
+                countId++;
+            }
+        }
+        averageSalary = sumSalary / countId;
+
+
+        return averageSalary;
+
+    }
+
+
+    @Override
+    public String toString() {
+        return "Отдел кадров :" +
+                "сотрудник =" + Arrays.toString(employee);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
