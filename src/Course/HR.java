@@ -27,14 +27,13 @@ public class HR {
 
     public double getMinSalary() {                                   //расчет минимальной зарплаты
         double minSalary = 0;
-        int count = 0;
-        for (; count < employee.length; count++) {
+        for (int count = 0; count < employee.length; count++) {
             if (employee[count] != null) {
                 minSalary = employee[count].getSalary();
                 break;
             }
         }
-        for (; count < employee.length; count++) {
+        for (int count = 0; count < employee.length; count++) {
             if (employee[count] != null && employee[count].getSalary() < minSalary) {
                 minSalary = employee[count].getSalary();
             }
