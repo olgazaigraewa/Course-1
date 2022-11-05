@@ -48,18 +48,11 @@ public class HR {
         double maxSalary = 0;
         int count = 0;
         for (; count < employee.length; count++) {
-            if (employee[count] != null) {
+            if (employee[count] != null && employee[count].getSalary() > maxSalary) {
                 maxSalary = employee[count].getSalary();
             }
-            for (; count < employee.length; count++) {
-                if (employee[count] != null && employee[count].getSalary() > maxSalary) {
-                    maxSalary = employee[count].getSalary();
-                }
-            }
-
         }
         return maxSalary;
-
     }
 
     public double averageSalary() {                        //расчет Средней зарплаты
